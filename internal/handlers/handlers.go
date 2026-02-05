@@ -11,7 +11,7 @@ import (
 )
 
 func RootHandler(w http.ResponseWriter, r *http.Request) {
-	file, err := os.ReadFile("../index.html")
+	file, err := os.ReadFile("./index.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -54,7 +54,7 @@ func UploadHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Header().Set("Content-Type", "text/plain; charset=UTF-8")
+	w.Header().Set("Content-Type", "text/html")
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(preparedData))
 }
